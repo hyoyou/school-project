@@ -1,3 +1,5 @@
+require 'auth'
+
 class Api::UsersController < ApplicationController
 
   before_action :set_user, only: [:show, :update, :destroy]
@@ -12,6 +14,15 @@ class Api::UsersController < ApplicationController
 
   def signup
     user = User.new(user_params)
+    binding.pry
+    if user.save
+      token = Auth.create_token(user)
+      returned_user = Auth.decode_token(token)
+
+      render json: returned_user, status: 200
+    else
+      render json: {message: user.errors}, status: 400
+    end
   end
 
   def update
