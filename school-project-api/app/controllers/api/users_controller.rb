@@ -42,3 +42,6 @@ class Api::UsersController < ApplicationController
   end
 
 end
+
+#Carrier Wave Documentation
+#https://github.com/carrierwaveuploader/carrierwave
