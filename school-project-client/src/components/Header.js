@@ -3,7 +3,7 @@ import logo from '../containers/schoolprojectlogo.svg'
 
 const Header = () => {
   return(
-    <div className="header">
+    <div className="dark-background header row">
       <img className="school-logo" src={logo} alt="logo"/>
     </div>
   )
