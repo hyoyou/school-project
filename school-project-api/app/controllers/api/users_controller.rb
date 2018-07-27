@@ -27,9 +27,19 @@ class Api::UsersController < ApplicationController
   end
 
   def update
+    if @user.update(user_params)
+      render json: @user
+    else
+      render json: {message: @user.errors}, status: 400
+    end
   end
 
   def destroy
+    if @user.destroy
+      render status: 204
+    else
+      render json: {message: "Unable to process your request"}, status: 400
+    end
   end
 
   private 
